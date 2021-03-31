@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Podcast</string>
+    <string name="connection_error_title">Connection error</string>
+
+    <string name="connection_error_message">Unable to fetch podcasts feeds. \n Check your internet connection and try again</string>
+    <string name="retry_label">Retry</string>
+
+    <string name="album_search">Search</string>
+    <string name="album_account">Account</string>
+
+    <string name="album_unfollow">Unfollow</string>
+    <string name="album_follow">Follow</string>
+
+    <string name="updated_longer">Updated a while ago</string>
+    <string name="updated_today">Updated today</string>
+
+
+    <string name="home_library">Your library</string>
+    <string name="home_discover">Discover</string>
+
+    <plurals name="updated_weeks_ago">
+        <item quantity="one">Updated %d week ago</item>
+        <item quantity="other">Updated %d weeks ago</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">Updated yesterday</item>
+        <item quantity="other">Updated %d days ago</item>
+    </plurals>
+
+</resources>
