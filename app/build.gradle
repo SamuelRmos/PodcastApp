@@ -1,0 +1,94 @@
+import com.samuelrmos.podcastapp.buildsrc.Libs
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.samuelrmos.podcastapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+        freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Libs.Androidx.Compose.version
+    }
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'rome-utils-1.14.1.jar'
+
+    }
+}
+
+dependencies {
+
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.Core.coreKtx
+    implementation Libs.Androidx.Activity.activityCompose
+
+    implementation Libs.Androidx.AppCompat.appcompat
+    implementation Libs.MaterialDesign.materialDesign
+//    implementation Libs.Androidx.Constraint.constraintLayoutCompose
+
+    implementation Libs.Androidx.Compose.ui
+    implementation Libs.Androidx.Compose.material
+    implementation Libs.Androidx.Compose.tooling
+
+    implementation Libs.Androidx.Compose.materialExtended
+    implementation Libs.Androidx.LifeCycle.lifecycle
+    implementation Libs.Androidx.LifeCycle.viewModelCompose
+
+    implementation Libs.Accompanist.insets
+    implementation Libs.Coroutines.android
+    implementation Libs.Coroutines.core
+
+    implementation Libs.Coroutines.test
+    implementation Libs.Room.runtime
+    implementation Libs.Room.ktx
+
+    implementation Libs.Room.compiler
+    implementation Libs.OkHttp.logging
+    implementation Libs.OkHttp.okhttp
+
+    implementation Libs.Rome.rome
+    implementation Libs.Rome.modules
+    implementation Libs.Androidx.palette
+
+    implementation Libs.Accompanist.coil
+    implementation Libs.Accompanist.pager
+    implementation Libs.Accompanist.insets
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
