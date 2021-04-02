@@ -34,10 +34,10 @@ import com.samuelrmos.podcastapp.data.PodcastWithExtraInfo
 import com.samuelrmos.podcastapp.ui.theme.Keyline1
 import com.samuelrmos.podcastapp.ui.theme.PodcastAppTheme
 import com.samuelrmos.podcastapp.util.*
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
-
 
 @Composable
 fun Home() {

@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath Libs.androidGradlePlugin
         classpath Libs.Kotlin.gradlePlugin
+        classpath Libs.Hilt.hiltPlugin
         classpath 'com.android.tools.build:gradle:7.0.0-alpha08'
 
         // NOTE: Do not place your application dependencies here; they belong

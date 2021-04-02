@@ -1,4 +1,4 @@
-package com.samuelrmos.podcastapp
+package com.samuelrmos.podcastapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

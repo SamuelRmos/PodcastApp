@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.samuelrmos.podcastapp.data.PodcastStore
 import com.samuelrmos.podcastapp.data.PodcastWithExtraInfo
 import com.samuelrmos.podcastapp.data.PodcastsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val podcastsRepository: PodcastsRepository,
     private val podcastStore: PodcastStore
 ) : ViewModel() {

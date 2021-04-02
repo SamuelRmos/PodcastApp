@@ -1,11 +1,9 @@
 package com.samuelrmos.podcastapp.data.room
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Update
+import androidx.room.*
 import com.samuelrmos.podcastapp.data.PodcastCategoryEntry
 
+@Dao
 abstract class PodcastCategoryEntryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insert(entity: PodcastCategoryEntry): Long

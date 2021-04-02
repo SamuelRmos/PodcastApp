@@ -66,7 +66,8 @@ object Libs {
 
         object LifeCycle {
             private const val version = "2.3.0"
-            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
+            const val viewModelCompose =
+                "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
             const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
         }
     }
@@ -93,5 +94,16 @@ object Libs {
         private const val version = "1.14.1"
         const val rome = "com.rometools:rome:$version"
         const val modules = "com.rometools:rome-modules:$version"
+    }
+
+    object Hilt {
+        private const val hiltVersion = "2.33-beta"
+        private const val hiltAndroidXVersion = "1.0.0-alpha01"
+        const val hiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
+
+        const val lifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+        const val compiler = "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+        const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }

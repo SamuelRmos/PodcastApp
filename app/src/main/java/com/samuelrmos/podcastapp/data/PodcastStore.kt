@@ -4,8 +4,9 @@ import com.samuelrmos.podcastapp.data.room.PodcastDao
 import com.samuelrmos.podcastapp.data.room.PodcastFollowedEntryDao
 import com.samuelrmos.podcastapp.data.room.TransactionRunner
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PodcastStore(
+class PodcastStore @Inject constructor(
     private val podcastDao: PodcastDao,
     private val podcastFollowedEntryDao: PodcastFollowedEntryDao,
     private val transactionRunner: TransactionRunner
