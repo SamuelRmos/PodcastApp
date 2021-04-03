@@ -2,10 +2,7 @@ package com.samuelrmos.podcastapp.di
 
 import com.samuelrmos.podcastapp.data.EpisodeStore
 import com.samuelrmos.podcastapp.data.PodcastStore
-import com.samuelrmos.podcastapp.data.room.EpisodesDao
-import com.samuelrmos.podcastapp.data.room.PodcastDao
-import com.samuelrmos.podcastapp.data.room.PodcastFollowedEntryDao
-import com.samuelrmos.podcastapp.data.room.TransactionRunner
+import com.samuelrmos.podcastapp.data.room.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +27,16 @@ object StoreModule {
     @Singleton
     fun provideEpisodeStore(episodesDao: EpisodesDao): EpisodeStore {
         return EpisodeStore(episodesDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoryStore(
+        categoriesDao: CategoriesDao,
+        categoryEntryDao: PodcastCategoryEntryDao,
+        episodesDao: EpisodesDao,
+        podcastDao: PodcastDao
+    ): CategoryStore {
+        return CategoryStore(categoriesDao, categoryEntryDao, episodesDao, podcastDao)
     }
 }

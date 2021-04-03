@@ -7,7 +7,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
@@ -20,7 +19,7 @@ object FetcherModule {
     fun providePodcastsFetcher(
         okHttpClient: OkHttpClient,
         syndFeedInput: SyndFeedInput,
-        ioDispatcher: CoroutineDispatcher
+        @IoDispatcher ioDispatcher: CoroutineDispatcher
     ): PodcastsFetcher {
         return PodcastsFetcher(okHttpClient, syndFeedInput, ioDispatcher)
     }
@@ -29,11 +28,5 @@ object FetcherModule {
     @Singleton
     fun provideSyndFeedInput(): SyndFeedInput {
         return SyndFeedInput()
-    }
-
-    @Provides
-    @Singleton
-    fun provideIODispatcher(): CoroutineDispatcher {
-        return Dispatchers.IO
     }
 }

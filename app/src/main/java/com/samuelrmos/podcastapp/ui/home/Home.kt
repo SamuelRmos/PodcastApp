@@ -1,10 +1,10 @@
 package com.samuelrmos.podcastapp.ui.home
 
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
@@ -34,14 +34,13 @@ import com.samuelrmos.podcastapp.data.PodcastWithExtraInfo
 import com.samuelrmos.podcastapp.ui.theme.Keyline1
 import com.samuelrmos.podcastapp.ui.theme.PodcastAppTheme
 import com.samuelrmos.podcastapp.util.*
-import dagger.hilt.android.AndroidEntryPoint
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 
 @Composable
 fun Home() {
-    val viewModel = viewModel(HomeViewModel::class.java)
+    val viewModel: HomeViewModel = viewModel()
 
     val viewState by viewModel.state.collectAsState()
 
@@ -191,7 +190,15 @@ fun HomeCategoryTabIndicator(
         modifier
             .padding(horizontal = 24.dp)
             .height(4.dp)
-            .background(color, RoundedCornerShape(topStartPercent = 100, topEndPercent = 100))
+            .background(
+                color,
+                RoundedCornerShape(
+                    topStart = CornerSize(100.dp),
+                    topEnd = CornerSize(100.dp),
+                    bottomEnd = CornerSize(0.dp),
+                    bottomStart = CornerSize(0.dp)
+                )
+            )
     )
 }
 
@@ -320,11 +327,7 @@ fun FollowedPodcastCarouselItem(
 
 @Composable
 fun lastUpdated(lastEpisodeDate: OffsetDateTime): String {
-    val duration = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        Duration.between(lastEpisodeDate.toLocalDateTime(), LocalDateTime.now())
-    } else {
-        TODO("VERSION.SDK_INT < O")
-    }
+    val duration = Duration.between(lastEpisodeDate.toLocalDateTime(), LocalDateTime.now())
     val days = duration.toDays().toInt()
     return when {
         days > 28 -> stringResource(R.string.updated_longer)

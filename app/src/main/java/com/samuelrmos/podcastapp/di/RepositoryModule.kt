@@ -5,7 +5,9 @@ import com.samuelrmos.podcastapp.data.EpisodeStore
 import com.samuelrmos.podcastapp.data.PodcastStore
 import com.samuelrmos.podcastapp.data.PodcastsFetcher
 import com.samuelrmos.podcastapp.data.PodcastsRepository
+import com.samuelrmos.podcastapp.data.room.CategoryStore
 import com.samuelrmos.podcastapp.data.room.TransactionRunner
+import com.samuelrmos.podcastapp.data.room.TransactionRunnerDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,21 +28,17 @@ object RepositoryModule {
         podcastsFetcher: PodcastsFetcher,
         podcastStore: PodcastStore,
         episodeStore: EpisodeStore,
+        categoryStore: CategoryStore,
         transactionRunner: TransactionRunner,
-        mainDispatcher: CoroutineDispatcher
+        @MainDispatcher mainDispatcher: CoroutineDispatcher
     ): PodcastsRepository {
         return PodcastsRepository(
             podcastsFetcher,
             podcastStore,
             episodeStore,
+            categoryStore,
             transactionRunner,
             mainDispatcher
         )
-    }
-
-    @Provides
-    @Singleton
-    fun provideMainDispatcher(): CoroutineDispatcher {
-        return Dispatchers.Main
     }
 }

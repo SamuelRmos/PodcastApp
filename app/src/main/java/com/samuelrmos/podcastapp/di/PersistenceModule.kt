@@ -48,7 +48,7 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideTransactionRunnerDao(podcastAppDatabase: PodcastAppDatabase): TransactionRunnerDao {
+    fun provideTransactionRunnerDao(podcastAppDatabase: PodcastAppDatabase): TransactionRunner {
         return podcastAppDatabase.transactionRunnerDao()
     }
 

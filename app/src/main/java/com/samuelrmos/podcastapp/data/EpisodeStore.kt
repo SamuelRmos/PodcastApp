@@ -2,8 +2,9 @@ package com.samuelrmos.podcastapp.data
 
 import com.samuelrmos.podcastapp.data.room.EpisodesDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class EpisodeStore(private val episodesDao: EpisodesDao) {
+class EpisodeStore @Inject constructor(private val episodesDao: EpisodesDao) {
 
     fun episodesInPodcast(
         podcastUri: String,
